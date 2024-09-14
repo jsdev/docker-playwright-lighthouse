@@ -1,0 +1,12 @@
+{
+  "name": "lighthouse-playwright",
+  "version": "1.0.0",
+  "description": "A project to generate Lighthouse reports using Playwright",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "playwright": "^1.31.0" // You can specify the latest version
+  }
+}
