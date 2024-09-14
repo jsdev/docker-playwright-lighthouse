@@ -1,15 +1,8 @@
-# Use the official Node.js image.
-FROM node:18
+# Use the official Playwright image.
+FROM mcr.microsoft.com/playwright/playwright:latest
 
-# Install necessary dependencies.
-RUN apt-get update && apt-get install -y \
-    curl \
-    wget \
-    gnupg \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Playwright and Lighthouse.
-RUN npm install -g playwright lighthouse
+# Install Lighthouse.
+RUN npm install -g lighthouse
 
 # Create a working directory.
 WORKDIR /app
@@ -20,6 +13,9 @@ RUN npm install
 
 # Copy the rest of the application code.
 COPY . .
+
+# Ensure the entrypoint script is executable.
+RUN chmod +x /app/entrypoint.sh
 
 # Run the entrypoint script.
 ENTRYPOINT ["/app/entrypoint.sh"]
